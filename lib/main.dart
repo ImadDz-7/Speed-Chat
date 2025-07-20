@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speed_chat/pages/login_page.dart';
 
 void main() {
   runApp(const SpeedChat());
@@ -11,7 +12,7 @@ class SpeedChat extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      home: LoginPage(),
     );
   }
 }
