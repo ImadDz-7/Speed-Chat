@@ -29,7 +29,13 @@ class LoginPage extends StatelessWidget {
             ),
           ),
            TextField(
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
+
+              hintText: 'Email',
+              hintStyle: TextStyle(
+                color: Colors.white,
+              ),
               border: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.white,
@@ -42,7 +48,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
           ),
-          // Text('Speed Chat'),
+
         ],
       ),
     );
