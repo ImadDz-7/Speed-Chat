@@ -29,8 +29,25 @@ class LoginPage extends StatelessWidget {
               fontSize: 20,
             ),
           ),
-          CustomTextField(hintText: 'Email'),
-          CustomTextField(hintText: 'Password'),
+          const CustomTextField(hintText: 'Email'),
+          const CustomTextField(hintText: 'Password'),
+          Container(
+            width: double.infinity,
+            height: 55,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.white,
+            ),
+            child: const Center(
+              child: Text(
+                'Login',
+                style: TextStyle(
+                  color: Color(0xff2B475E),
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
