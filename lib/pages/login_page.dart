@@ -33,6 +33,12 @@ class LoginPage extends StatelessWidget {
           const CustomTextField(hintText: 'Email'),
           const CustomTextField(hintText: 'Password'),
           const CustomButton(text: 'Login'),
+          Row(
+            children: [
+              Text('don\'t have an account ', style: TextStyle(color: Colors.white),),
+              Text('Register', style: TextStyle(color: Colors.white),),
+            ],
+          ),
         ],
       ),
     );
