@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speed_chat/widgets/custom_button.dart';
 import 'package:speed_chat/widgets/custom_text_field.dart';
 
 class LoginPage extends StatelessWidget {
@@ -31,23 +32,7 @@ class LoginPage extends StatelessWidget {
           ),
           const CustomTextField(hintText: 'Email'),
           const CustomTextField(hintText: 'Password'),
-          Container(
-            width: double.infinity,
-            height: 55,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.white,
-            ),
-            child: const Center(
-              child: Text(
-                'Login',
-                style: TextStyle(
-                  color: Color(0xff2B475E),
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ),
+          const CustomButton(text: 'Login'),
         ],
       ),
     );
