@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speed_chat/pages/register_page.dart';
 import 'package:speed_chat/widgets/custom_button.dart';
 import 'package:speed_chat/widgets/custom_text_field.dart';
 
@@ -48,12 +49,24 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'don\'t have an account? ',
+                  'Don\'t have an account? ',
                   style: TextStyle(color: Colors.white),
                 ),
-                Text(
-                  'Register',
-                  style: TextStyle(color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return RegisterPage();
+                        },
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Register',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ],
             ),
