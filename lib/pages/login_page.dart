@@ -48,22 +48,15 @@ class LoginPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Don\'t have an account? ',
                   style: TextStyle(color: Colors.white),
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return RegisterPage();
-                        },
-                      ),
-                    );
+                    Navigator.pushNamed(context, 'RegisterPage');
                   },
-                  child: Text(
+                  child: const Text(
                     'Register',
                     style: TextStyle(color: Colors.white),
                   ),
