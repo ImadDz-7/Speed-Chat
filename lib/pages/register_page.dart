@@ -22,8 +22,8 @@ class RegisterPage extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
+              children: const [
+                 Text(
                   'Speed Chat',
                   style: TextStyle(
                     color: Colors.white,

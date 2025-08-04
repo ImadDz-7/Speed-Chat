@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "706267674322",
+    "project_id": "speed-chat25",
+    "storage_bucket": "speed-chat25.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706267674322:android:227702cb3f8325e4a1df0b",
+        "android_client_info": {
+          "package_name": "com.example.speed_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvtSRwX0R6Tex5kXt-Gj3z_AmvPOctay4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
