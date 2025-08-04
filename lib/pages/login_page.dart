@@ -13,20 +13,26 @@ class LoginPage extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
+        child: ListView(
           children: [
-            const Spacer(flex: 1),
+            const SizedBox(height: 50),
             Image.asset(
               'assets/images/fastchat.png',
               width: 220,
+              height: 130,
             ),
-            const Text(
-              'Speed Chat',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-                fontFamily: 'Pacifico',
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                 Text(
+                  'Speed Chat',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontFamily: 'Pacifico',
+                  ),
+                ),
+              ],
             ),
             Row(
               children: const [
@@ -64,7 +70,6 @@ class LoginPage extends StatelessWidget {
                 ),
               ],
             ),
-            const Spacer(flex: 2),
           ],
         ),
       ),
