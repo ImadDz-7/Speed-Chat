@@ -5,6 +5,7 @@ import 'package:speed_chat/widgets/custom_text_field.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
+  static String id = 'RegisterPage';
 
   @override
   Widget build(BuildContext context) {

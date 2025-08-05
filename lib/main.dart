@@ -1,8 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:speed_chat/firebase_options.dart';
 import 'package:speed_chat/pages/login_page.dart';
 import 'package:speed_chat/pages/register_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const SpeedChat());
 }
 
@@ -14,10 +20,10 @@ class SpeedChat extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        'LoginPage' : (context) => LoginPage(),
-        'RegisterPage' : (context) => RegisterPage(),
+        LoginPage.id : (context) => LoginPage(),
+        RegisterPage.id : (context) => RegisterPage(),
       },
-      initialRoute: 'LoginPage',
+      initialRoute: LoginPage.id,
     );
   }
 }

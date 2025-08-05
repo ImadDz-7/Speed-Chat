@@ -6,6 +6,7 @@ import 'package:speed_chat/widgets/custom_text_field.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
+  static String id = 'LoginPage';
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, 'RegisterPage');
+                    Navigator.pushNamed(context, RegisterPage.id);
                   },
                   child: const Text(
                     'Register',
