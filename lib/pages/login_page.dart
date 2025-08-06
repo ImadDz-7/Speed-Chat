@@ -51,7 +51,12 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 10),
             const CustomTextField(hintText: 'Password'),
             const SizedBox(height: 30),
-            const CustomButton(text: 'Login'),
+            CustomButton(
+              onTap:(){
+                
+              } 
+              ,
+              text: 'Login'),
             const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
