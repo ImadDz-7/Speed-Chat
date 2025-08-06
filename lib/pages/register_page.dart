@@ -71,6 +71,7 @@ class RegisterPage extends StatelessWidget {
                   email: email!,
                   password: password!,
                 );
+                print(user.user!.displayName);
               },
               text: 'Register',
             ),
