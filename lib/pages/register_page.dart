@@ -8,6 +8,7 @@ class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
   static String id = 'RegisterPage';
 
+  GlobalKey<FormState> formKey = GlobalKey();
   String? email;
   String? password;
 
@@ -17,102 +18,107 @@ class RegisterPage extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: ListView(
-          children: [
-            const SizedBox(height: 50),
-            Image.asset(
-              'assets/images/fastchat.png',
-              width: 220,
-              height: 130,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  'Speed Chat',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontFamily: 'Pacifico',
+        child: Form(
+          key: formKey,
+          child: ListView(
+            children: [
+              const SizedBox(height: 50),
+              Image.asset(
+                'assets/images/fastchat.png',
+                width: 220,
+                height: 130,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    'Speed Chat',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontFamily: 'Pacifico',
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: const [
-                Text(
-                  'REGISTER',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+                ],
+              ),
+              Row(
+                children: const [
+                  Text(
+                    'REGISTER',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            CustomTextField(
-              onChanged: (data) {
-                email = data;
-              },
-              hintText: 'Email',
-            ),
-            const SizedBox(height: 10),
-            CustomTextField(
-              onChanged: (data) {
-                password = data;
-              },
-              hintText: 'Password',
-            ),
-            const SizedBox(height: 30),
-            CustomButton(
-              onTap: () async {
-                try {
-                  await registerUser(
-                    email: email,
-                    password: password,
-                  );
-                  showSnackBar(
-                    context: context,
-                    message: 'Email created successfully',
-                  );
-                } on FirebaseAuthException catch (e) {
-                  if (e.code == 'weak-password') {
-                    showSnackBar(
-                      context: context,
-                      message: 'The password provided is too weak.',
-                    );
-                  } else if (e.code == 'email-already-in-use') {
-                    showSnackBar(
-                      context: context,
-                      message: 'The account already exists for that email.',
-                    );
+                ],
+              ),
+              const SizedBox(height: 20),
+              CustomTextField(
+                onChanged: (data) {
+                  email = data;
+                },
+                hintText: 'Email',
+              ),
+              const SizedBox(height: 10),
+              CustomTextField(
+                onChanged: (data) {
+                  password = data;
+                },
+                hintText: 'Password',
+              ),
+              const SizedBox(height: 30),
+              CustomButton(
+                onTap: () async {
+                  if (formKey.currentState!.validate()) {
+                    try {
+                      await registerUser(
+                        email: email,
+                        password: password,
+                      );
+                      showSnackBar(
+                        context: context,
+                        message: 'Email created successfully',
+                      );
+                    } on FirebaseAuthException catch (e) {
+                      if (e.code == 'weak-password') {
+                        showSnackBar(
+                          context: context,
+                          message: 'The password provided is too weak.',
+                        );
+                      } else if (e.code == 'email-already-in-use') {
+                        showSnackBar(
+                          context: context,
+                          message: 'The account already exists for that email.',
+                        );
+                      }
+                    } catch (e) {
+                      print(e);
+                    }
                   }
-                } catch (e) {
-                  print(e);
-                }
-              },
-              text: 'Register',
-            ),
-            const SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Already have an account? ',
-                  style: TextStyle(color: Colors.white),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text(
-                    'Login',
+                },
+                text: 'Register',
+              ),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Already have an account? ',
                     style: TextStyle(color: Colors.white),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
