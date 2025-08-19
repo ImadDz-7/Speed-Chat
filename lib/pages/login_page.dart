@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:speed_chat/constants.dart';
 import 'package:speed_chat/helper/show_snack_bar.dart';
+import 'package:speed_chat/pages/chat_page.dart';
 import 'package:speed_chat/pages/register_page.dart';
 import 'package:speed_chat/widgets/custom_button.dart';
 import 'package:speed_chat/widgets/custom_text_field.dart';
@@ -85,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {});
                       try {
                         await loginUser();
+                        Navigator.pushNamed(context, ChatPage.id);
                         showSnackBar(
                           context: context,
                           message: 'Login successfully',
