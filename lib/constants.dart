@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xFF2B475E);
-
+const kLogo = 'assets/images/fastchat.png';
 
 
   Future<void> registerUser({String? email, String? password}) async {

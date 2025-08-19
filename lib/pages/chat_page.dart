@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speed_chat/constants.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -7,6 +8,19 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kPrimaryColor,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(kLogo, height: 50,),
+            const Text('Chat'),
+          ],
+        ),
+      ),
+    );
   }
 }

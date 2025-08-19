@@ -37,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 const SizedBox(height: 50),
                 Image.asset(
-                  'assets/images/fastchat.png',
+                  kLogo,
                   width: 220,
                   height: 130,
                 ),

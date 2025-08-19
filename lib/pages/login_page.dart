@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 const SizedBox(height: 50),
                 Image.asset(
-                  'assets/images/fastchat.png',
+                  kLogo,
                   width: 220,
                   height: 130,
                 ),
