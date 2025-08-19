@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:speed_chat/constants.dart';
+import 'package:speed_chat/helper/show_snack_bar.dart';
 import 'package:speed_chat/pages/register_page.dart';
 import 'package:speed_chat/widgets/custom_button.dart';
 import 'package:speed_chat/widgets/custom_text_field.dart';
@@ -15,6 +17,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool isLoading = false;
+  String? email;
+  String? password;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   Text(
+                  Text(
                     'Speed Chat',
                     style: TextStyle(
                       color: Colors.white,
@@ -57,16 +61,42 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               const SizedBox(height: 20),
-               CustomTextField(hintText: 'Email'),
+              CustomTextField(
+                onChanged: (data) {
+                  email = data;
+                },
+                hintText: 'Email',
+              ),
               const SizedBox(height: 10),
-               CustomTextField(hintText: 'Password'),
+              CustomTextField(
+                onChanged: (data) {
+                  password = data;
+                },
+                hintText: 'Password',
+              ),
               const SizedBox(height: 30),
               CustomButton(
-                onTap:(){
-    
-                } 
-                ,
-                text: 'Login'),
+                onTap: () async {
+                  try {
+                    var auth = FirebaseAuth.instance;
+                    UserCredential user = await auth.signInWithEmailAndPassword(
+                      email: email!,
+                      password: password!,
+                    );
+                    showSnackBar(
+                      context: context,
+                      message: 'Login successfully',
+                    );
+                  } on FirebaseAuthException catch (e) {
+                    // if (e.code == 'user-not-found') {
+                    //   print('No user found for that email.');
+                    // } else if (e.code == 'wrong-password') {
+                    //   print('Wrong password provided for that user.');
+                    // }
+                  }
+                },
+                text: 'Login',
+              ),
               const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
