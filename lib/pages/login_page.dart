@@ -80,36 +80,36 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 30),
                 CustomButton(
                   onTap: () async {
-                    try {
-                      var auth = FirebaseAuth.instance;
-                      UserCredential user = await auth.signInWithEmailAndPassword(
-                        email: email!,
-                        password: password!,
-                      );
-                      showSnackBar(
-                        context: context,
-                        message: 'Login successfully',
-                      );
-                    } on FirebaseAuthException catch (e) {
-                      if (e.code == 'user-not-found') {
+                    if (formKey.currentState!.validate()) {
+                      isLoading = true;
+                      setState(() {});
+                      try {
+                        await loginUser();
                         showSnackBar(
                           context: context,
-                          message: 'No user found for that email.',
+                          message: 'Login successfully',
                         );
-                      } else if (e.code == 'wrong-password') {
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'user-not-found') {
+                          showSnackBar(
+                            context: context,
+                            message: 'No user found for that email.',
+                          );
+                        } else if (e.code == 'wrong-password') {
+                          showSnackBar(
+                            context: context,
+                            message: 'Wrong password provided for that user.',
+                          );
+                        }
+                      } catch (e) {
                         showSnackBar(
                           context: context,
-                          message: 'Wrong password provided for that user.',
+                          message: 'Oops there was an error, please try again!',
                         );
                       }
-                    } catch (e) {
-                      showSnackBar(
-                        context: context,
-                        message: 'Oops there was an error, please try again!',
-                      );
+                      isLoading = false;
+                      setState(() {});
                     }
-                    isLoading = false;
-                    setState(() {});
                   },
                   text: 'Login',
                 ),
@@ -137,6 +137,14 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> loginUser() async {
+    var auth = FirebaseAuth.instance;
+    UserCredential user = await auth.signInWithEmailAndPassword(
+      email: email!,
+      password: password!,
     );
   }
 }
