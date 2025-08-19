@@ -81,6 +81,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 CustomButton(
                   onTap: () async {
                     if (formKey.currentState!.validate()) {
+                      isLoading = true;
+                      setState(() {});
                       try {
                         await registerUser(
                           email: email,
@@ -99,12 +101,20 @@ class _RegisterPageState extends State<RegisterPage> {
                         } else if (e.code == 'email-already-in-use') {
                           showSnackBar(
                             context: context,
-                            message: 'The account already exists for that email.',
+                            message:
+                                'The account already exists for that email.',
                           );
                         }
                       } catch (e) {
-                        print(e);
+                        showSnackBar(
+                          context: context,
+                          message: 'Oops there was an error, please try again!',
+                        );
                       }
+                      isLoading = false;
+                      setState(() {
+                        
+                      });
                     }
                   },
                   text: 'Register',
