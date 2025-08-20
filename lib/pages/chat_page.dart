@@ -5,7 +5,7 @@ import 'package:speed_chat/widgets/chat_bubble.dart';
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
-  static String id = 'ChatPage'; 
+  static String id = 'ChatPage';
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +17,19 @@ class ChatPage extends StatelessWidget {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(kLogo, height: 50,),
+            Image.asset(
+              kLogo,
+              height: 50,
+            ),
             const Text('Chat'),
           ],
         ),
       ),
-      body: ChatBubble(),
+      body: ListView.builder(
+        itemBuilder: ((context, index) {
+          return ChatBubble();
+        }),
+      ),
     );
   }
 }
