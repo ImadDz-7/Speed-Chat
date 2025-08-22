@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:speed_chat/constants.dart';
 import 'package:speed_chat/widgets/chat_bubble.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  ChatPage({super.key});
 
   static String id = 'ChatPage';
+  CollectionReference messages =
+      FirebaseFirestore.instance.collection(kMessagesCollection);
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +41,17 @@ class ChatPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: TextField(
+              controller: controller,
+              onSubmitted: (data) {
+                messages.add(
+                  {
+                    'message': data,
+                  },
+                );
+                controller.clear();
+              },
               decoration: InputDecoration(
-                hintText: 'Send Message',
+                  hintText: 'Send Message',
                   suffixIcon: Icon(
                     Icons.send,
                     color: kPrimaryColor,
