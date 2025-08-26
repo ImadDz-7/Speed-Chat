@@ -1,9 +1,11 @@
+import 'package:speed_chat/constants.dart';
+
 class MessageModel{
   final String message;
 
   MessageModel(this.message);
 
-  factory MessageModel.json(json){
-    return MessageModel(json['']);
+  factory MessageModel.fromJson(json){
+    return MessageModel(json[kMessage]);
   }
 }
