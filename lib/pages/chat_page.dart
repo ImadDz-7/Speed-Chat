@@ -19,7 +19,7 @@ class ChatPage extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<MessageModel> messagesList = [];
-            for(int i = 0; i < snapshot.data!.docs.length; i++){
+            for (int i = 0; i < snapshot.data!.docs.length; i++) {
               messagesList.add(MessageModel.fromJson(snapshot.data!.docs[i]));
             }
             print(snapshot.data!.docs[0]['message']);
@@ -43,8 +43,11 @@ class ChatPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
+                      itemCount: messagesList.length,
                       itemBuilder: ((context, index) {
-                        return ChatBubble();
+                        return ChatBubble(
+                          messageModel: messagesList[index],
+                        );
                       }),
                     ),
                   ),
