@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:speed_chat/constants.dart';
+import 'package:speed_chat/models/message_model.dart';
 import 'package:speed_chat/widgets/chat_bubble.dart';
 
 class ChatPage extends StatelessWidget {
@@ -50,7 +51,7 @@ class ChatPage extends StatelessWidget {
                       onSubmitted: (data) {
                         messages.add(
                           {
-                            'message': data,
+                            kMessage: data,
                           },
                         );
                         controller.clear();
