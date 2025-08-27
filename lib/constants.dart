@@ -5,6 +5,7 @@ const kPrimaryColor = Color(0xFF2B475E);
 const kLogo = 'assets/images/fastchat.png';
 const kMessagesCollection = 'messages';
 const kMessage = 'message';
+const kCreatedAt = 'createdAt';
 
 
   Future<void> registerUser({String? email, String? password}) async {
