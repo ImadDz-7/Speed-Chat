@@ -7,6 +7,7 @@ const kLogo = 'assets/images/fastchat.png';
 const kMessagesCollection = 'messages';
 const kMessage = 'message';
 const kCreatedAt = 'createdAt';
+const kId = 'id';
 
 
   Future<void> registerUser({String? email, String? password}) async {

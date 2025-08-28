@@ -50,9 +50,13 @@ class ChatPage extends StatelessWidget {
                       controller: scrollController,
                       itemCount: messagesList.length,
                       itemBuilder: ((context, index) {
-                        return ChatBubbleForFriend(
-                          messageModel: messagesList[index],
-                        );
+                        return messagesList[index].id == email
+                            ? ChatBubble(
+                                messageModel: messagesList[index],
+                              )
+                            : ChatBubbleForFriend(
+                                messageModel: messagesList[index],
+                              );
                       }),
                     ),
                   ),
@@ -65,7 +69,7 @@ class ChatPage extends StatelessWidget {
                           {
                             kMessage: data,
                             kCreatedAt: DateTime.now(),
-                            'id': email,
+                            kId: email,
                           },
                         );
                         controller.clear();
@@ -80,10 +84,7 @@ class ChatPage extends StatelessWidget {
                           suffixIcon: IconButton(
                             icon: const Icon(Icons.send),
                             color: kPrimaryColor,
-                            onPressed: (){
-                              
-                            },
-                            
+                            onPressed: () {},
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),

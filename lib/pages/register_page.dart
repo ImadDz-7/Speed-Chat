@@ -90,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           email: email,
                           password: password,
                         );
-                        Navigator.pushNamed(context, ChatPage.id);
+                        Navigator.pop(context);
                         showSnackBar(
                           context: context,
                           message: 'Email created successfully',
