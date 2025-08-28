@@ -15,6 +15,8 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var email = ModalRoute.of(context)!.settings.arguments;
+
     return StreamBuilder<QuerySnapshot>(
         stream: messages.orderBy(kCreatedAt, descending: true).snapshots(),
         builder: (context, snapshot) {
@@ -62,6 +64,7 @@ class ChatPage extends StatelessWidget {
                           {
                             kMessage: data,
                             kCreatedAt: DateTime.now(),
+                            'id': email,
                           },
                         );
                         controller.clear();
@@ -73,9 +76,13 @@ class ChatPage extends StatelessWidget {
                       },
                       decoration: InputDecoration(
                           hintText: 'Send Message',
-                          suffixIcon: Icon(
-                            Icons.send,
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.send),
                             color: kPrimaryColor,
+                            onPressed: (){
+                              
+                            },
+                            
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),
