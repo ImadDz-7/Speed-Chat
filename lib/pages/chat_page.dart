@@ -11,11 +11,12 @@ class ChatPage extends StatelessWidget {
   CollectionReference messages =
       FirebaseFirestore.instance.collection(kMessagesCollection);
   TextEditingController controller = TextEditingController();
+  final scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: messages.orderBy(kCreatedAt).snapshots(),
+        stream: messages.orderBy(kCreatedAt, descending: true).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<MessageModel> messagesList = [];
@@ -42,6 +43,8 @@ class ChatPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
+                      reverse: true,
+                      controller: scrollController,
                       itemCount: messagesList.length,
                       itemBuilder: ((context, index) {
                         return ChatBubble(
@@ -62,6 +65,11 @@ class ChatPage extends StatelessWidget {
                           },
                         );
                         controller.clear();
+                        scrollController.animateTo(
+                          0,
+                          duration: const Duration(milliseconds: 10),
+                          curve: Curves.easeIn,
+                        );
                       },
                       decoration: InputDecoration(
                           hintText: 'Send Message',
@@ -84,7 +92,11 @@ class ChatPage extends StatelessWidget {
               ),
             );
           } else {
-            return const Text('Loading...');
+            return const Scaffold(
+              body: Center(
+                child: Text('Loading...'),
+              ),
+            );
           }
         });
   }
