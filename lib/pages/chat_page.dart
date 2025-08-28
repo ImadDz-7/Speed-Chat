@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:speed_chat/constants.dart';
 import 'package:speed_chat/models/message_model.dart';
 import 'package:speed_chat/widgets/chat_bubble.dart';
+import 'package:speed_chat/widgets/chat_bubble_for_friend.dart';
 
 class ChatPage extends StatelessWidget {
   ChatPage({super.key});
@@ -49,7 +50,7 @@ class ChatPage extends StatelessWidget {
                       controller: scrollController,
                       itemCount: messagesList.length,
                       itemBuilder: ((context, index) {
-                        return ChatBubble(
+                        return ChatBubbleForFriend(
                           messageModel: messagesList[index],
                         );
                       }),

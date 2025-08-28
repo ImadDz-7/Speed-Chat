@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xFF2B475E);
+const kColor = Colors.deepOrange;
 const kLogo = 'assets/images/fastchat.png';
 const kMessagesCollection = 'messages';
 const kMessage = 'message';
